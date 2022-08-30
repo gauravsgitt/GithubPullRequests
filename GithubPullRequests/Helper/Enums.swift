@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: State type
 enum StateType {
     case open
     case closed
@@ -24,6 +25,7 @@ enum StateType {
     }
 }
 
+//MARK: Validation result
 enum ValidationResult {
     case failed(message: String)
     case success

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol ShowErrorProtocol {
+protocol FetchPullRequestsProtocol {
     func showAlert(title: String, message: String)
     func pullRequestsDataFetched(dataArray: [PullRequestsDataModel])
 }
@@ -19,17 +19,22 @@ class FetchPullRequestsDataController: HelpingFunctions {
     
     var delegate: ShowErrorProtocol?
     
+    //MARK: Function to get all pull requests wrt its state
     func getData(repo: String, username: String, owner: String, state: StateType, view: UIView) {
+        //Initialize loader
         let spinner = self.showLoader(view: view)
         
+        //Resultant array containing all required pull requests
         var dataArr = [PullRequestsDataModel]()
         
+        //URL with query items
         let url = URL(string: self.getPullRequestsOfRepoCompleteURL(repo: repo, username: username))
         var components = URLComponents(url: url!, resolvingAgainstBaseURL: false)
         components?.queryItems = [URLQueryItem(name: "owner", value: username),
                                   URLQueryItem(name: "repo", value: repo),
                                   URLQueryItem(name: "state", value: state.description)]
 
+        //Headers
         let headers = ["content-type": "application/json",
                        "accept": "application/vnd.github+json"]
 
@@ -38,13 +43,14 @@ class FetchPullRequestsDataController: HelpingFunctions {
         request.allHTTPHeaderFields = headers
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
+            //Dismiss loader when you get API hit successfully
             spinner.dismissLoader()
-//            debugPrint("url=======", (components?.url)!)
-//            debugPrint("headers=======", headers as Any)
+            //debugPrint("url=======", (components?.url)!)
+            //debugPrint("headers=======", headers as Any)
 
             if error != nil {
                 
-//                debugPrint("error=======", error?.localizedDescription ?? somethingWentWrong)
+                //debugPrint("error=======", error?.localizedDescription ?? somethingWentWrong)
                 self.delegate?.showAlert(title: errorText,message: error?.localizedDescription ?? somethingWentWrong)
                 
             } else if data != nil && data?.count != 0 {
@@ -52,7 +58,6 @@ class FetchPullRequestsDataController: HelpingFunctions {
                 do {
                     let jsonData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
                     if let jsonDictArray = jsonData as? [Any] {
-//                        dylanmtaylor
                         for item in jsonDictArray as! [Dictionary<String, AnyObject>] {
                             dataArr.append(PullRequestsDataModel(title: item["title"] as? String ?? "",
                                                                  dateCreated: self.convertDateToddMMyyyyFormat(dateInString: item["created_date"] as? String ?? ""),
@@ -72,7 +77,7 @@ class FetchPullRequestsDataController: HelpingFunctions {
                     }
                 } catch let jsonError {
                     
-//                    debugPrint(jsonError.localizedDescription)
+                    //debugPrint(jsonError.localizedDescription)
                     self.delegate?.showAlert(title: errorText, message: jsonError.localizedDescription)
                 }
             }

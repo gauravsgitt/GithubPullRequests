@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: String constants
 let ok = "Ok"
 let usernameText = "Username"
 let errorText = "Error"

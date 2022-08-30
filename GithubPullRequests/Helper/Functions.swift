@@ -12,15 +12,18 @@ protocol HelpingFunctions {}
 
 extension HelpingFunctions {
     
+    //MARK: Register table view cells
     func registerTableViewCell(tableView: UITableView, nibName: String, identifier: String) {
         tableView.register(UINib(nibName: nibName, bundle: nil), forCellReuseIdentifier: identifier)
     }
     
+    //MARK: Apply rounded corners to a view
     func applyRoundedCornersToUIViews(_ view: UIView, radius: Int) {
         view.layer.masksToBounds = true
         view.layer.cornerRadius = CGFloat(radius)
     }
 
+    //MARK: Give image views a round shape
     func makeImageViewRounded(_ image: UIImageView) {
         image.layer.borderWidth = 1
         image.layer.masksToBounds = false
@@ -29,11 +32,13 @@ extension HelpingFunctions {
         image.clipsToBounds = true
     }
     
+    //MARK: Generate get pull requests API
     func getPullRequestsOfRepoCompleteURL(repo: String, username: String) -> String {
         return getPullRequestsOfRepoBaseURL + "/\(username)/\(repo)/pulls"
         // https://api.github.com/repos/ValveSoftware/Proton/pulls
     }
     
+    //MARK: Covert date in "yyyy-MM-dd'T'HH:mm:ssZ" format to "dd-MM-yyyy"
     func convertDateToddMMyyyyFormat(dateInString: String) -> String {
         let string = dateInString
         let dateFormatter = DateFormatter()
@@ -46,6 +51,7 @@ extension HelpingFunctions {
         return dateFormatter.string(from: date)
     }
     
+    //MARK: Show loader
     func showLoader(view: UIView) -> UIActivityIndicatorView {
         let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height:40))
         spinner.backgroundColor = UIColor.clear

@@ -9,6 +9,7 @@ import UIKit
 
 class PullRequestsListViewController: UIViewController, HelpingFunctions {
 
+    //MARK: IBOutlets
     @IBOutlet weak var userDetailsTableView: UITableView!
     @IBOutlet weak var usernameAndRepoLabel: UILabel!
     
@@ -22,17 +23,20 @@ class PullRequestsListViewController: UIViewController, HelpingFunctions {
         self.setupUsernameAndRepoLabel()
     }
 
+    //MARK: Function to call  API to get all pull requests wrt state of the pull requests
     func populateClosedPullRequestsArray() {
         
         FetchPullRequestsDataController.shared.delegate = self
         FetchPullRequestsDataController.shared.getData(repo: self.viewModel?.repo ?? "", username: self.viewModel?.username ?? "", owner: self.viewModel?.owner ?? "", state: .closed, view: self.view)
     }
     
+    //MARK: Funtion to set username and repository labels
     private func setupUsernameAndRepoLabel() {
         self.usernameAndRepoLabel.text = "\(self.viewModel?.username ?? "") / \(self.viewModel?.repo ?? "")"
     }
 }
 
+//MARK: UITableViewDelegate and UITableViewDataSource
 extension PullRequestsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,14 +59,16 @@ extension PullRequestsListViewController: UITableViewDelegate, UITableViewDataSo
                             imageURL: self.pullRequestsList[indexPath.row].userDetails.avatarURL)
             return cell
         } else {
-//            debugPrint(dataNotFound)
+            //debugPrint(dataNotFound)
             return UITableViewCell()
         }
     }
 }
 
-extension PullRequestsListViewController: ShowErrorProtocol {
+//MARK: Fetch Pull Requests Protocol
+extension PullRequestsListViewController: FetchPullRequestsProtocol {
     
+    //To show alert
     func showAlert(title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -74,6 +80,7 @@ extension PullRequestsListViewController: ShowErrorProtocol {
         }
     }
     
+    //Called when API call is done successfully
     func pullRequestsDataFetched(dataArray: [PullRequestsDataModel]) {
         self.pullRequestsList = dataArray
         DispatchQueue.main.sync {

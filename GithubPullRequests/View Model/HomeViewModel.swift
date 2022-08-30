@@ -9,6 +9,7 @@ import Foundation
 
 class HomeViewModel {
     
+    //MARK: Function to check if all fields are filled
     func checkValidation(username: String, repo: String, name: String) -> (isValid: Bool, message: String) {
         if username.isEmpty {
             return (isValid: false, message: enterUsername)

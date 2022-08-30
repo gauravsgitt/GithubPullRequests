@@ -28,7 +28,6 @@
 		F4AEF14B28AE3545001312D9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AEF14A28AE3545001312D9 /* Constants.swift */; };
 		F4AEF14F28AED1E0001312D9 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AEF14D28AED1E0001312D9 /* DetailsTableViewCell.swift */; };
 		F4AEF15028AED1E0001312D9 /* DetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AEF14E28AED1E0001312D9 /* DetailsTableViewCell.xib */; };
-		F4B9E5C128BB5A1200290363 /* PullRequestsDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9E5C028BB5A1200290363 /* PullRequestsDataViewModel.swift */; };
 		F4B9E5C328BB6C1400290363 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9E5C228BB6C1400290363 /* Enums.swift */; };
 		F4B9E5C728BC02CB00290363 /* PullRequestsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9E5C628BC02CB00290363 /* PullRequestsListViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -76,7 +75,6 @@
 		F4AEF14A28AE3545001312D9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F4AEF14D28AED1E0001312D9 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
 		F4AEF14E28AED1E0001312D9 /* DetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsTableViewCell.xib; sourceTree = "<group>"; };
-		F4B9E5C028BB5A1200290363 /* PullRequestsDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsDataViewModel.swift; sourceTree = "<group>"; };
 		F4B9E5C228BB6C1400290363 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		F4B9E5C628BC02CB00290363 /* PullRequestsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestsListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				F4B9E5C628BC02CB00290363 /* PullRequestsListViewModel.swift */,
-				F4B9E5C028BB5A1200290363 /* PullRequestsDataViewModel.swift */,
 				F49A16A328BD2F9C00F7888C /* HomeViewModel.swift */,
 			);
 			path = "View Model";
@@ -367,7 +364,6 @@
 				F479723628ABEE5300D96AA8 /* AppDelegate.swift in Sources */,
 				F4AEF14F28AED1E0001312D9 /* DetailsTableViewCell.swift in Sources */,
 				F4AEF14B28AE3545001312D9 /* Constants.swift in Sources */,
-				F4B9E5C128BB5A1200290363 /* PullRequestsDataViewModel.swift in Sources */,
 				F400068528AF98E300D7E842 /* FetchPullRequestsDataController.swift in Sources */,
 				F400068128AF7DBD00D7E842 /* Extensions.swift in Sources */,
 				F400067F28AF5FF200D7E842 /* HomeViewController.swift in Sources */,

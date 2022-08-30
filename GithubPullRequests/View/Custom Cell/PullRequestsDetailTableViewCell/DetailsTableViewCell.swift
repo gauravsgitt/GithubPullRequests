@@ -9,10 +9,9 @@ import UIKit
 
 class DetailsTableViewCell: UITableViewCell, HelpingFunctions {
 
+    //MARK: IBOutlets
     @IBOutlet weak var containerStackView: UIStackView!
-    
     @IBOutlet weak var profilePictureImageView: UIImageView!
-    
     @IBOutlet weak var userNameLabel: PaddingLabel!
     @IBOutlet weak var titleLabel: PaddingLabel!
     @IBOutlet weak var dateCreatedLabel: PaddingLabel!
@@ -28,6 +27,7 @@ class DetailsTableViewCell: UITableViewCell, HelpingFunctions {
         super.setSelected(selected, animated: animated)
     }
     
+    //MARK: Function to configure profile picture image view
     private func configProfilePictureImageView() {
         self.applyRoundedCornersToUIViews(self.profilePictureImageView, radius: 10)
 //        self.profilePictureImageView.layer.borderWidth = 1
@@ -35,6 +35,7 @@ class DetailsTableViewCell: UITableViewCell, HelpingFunctions {
         self.profilePictureImageView.layer.masksToBounds = true
     }
     
+    //MARK: Configure pull requests tableView cell
     func configCell(username: String, title: String, dateCreated: String, dateClosed: String, imageURL: String) {
         self.userNameLabel.text = username
         self.titleLabel.text = title

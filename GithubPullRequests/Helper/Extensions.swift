@@ -8,14 +8,7 @@
 import Foundation
 import UIKit
 
-//extension UIViewController {
-//  func showAlert(title: String, message: String) {
-//    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-//    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {action in }))
-//    self.present(alert, animated: true, completion: nil)
-//  }
-//}
-
+//MARK: UIImageView
 extension UIImageView {
     func loadFrom(URLAddress: String) {
         guard let url = URL(string: URLAddress) else {
@@ -32,6 +25,7 @@ extension UIImageView {
     }
 }
 
+//MARK: UIActivityIndicatorView
 extension UIActivityIndicatorView {
     func dismissLoader() {
         DispatchQueue.main.sync {
