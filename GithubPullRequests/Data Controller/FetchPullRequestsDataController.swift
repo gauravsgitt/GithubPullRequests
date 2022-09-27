@@ -17,7 +17,7 @@ class FetchPullRequestsDataController: HelpingFunctions {
     
     static let shared = FetchPullRequestsDataController()
     
-    var delegate: ShowErrorProtocol?
+    var delegate: FetchPullRequestsProtocol?
     
     //MARK: Function to get all pull requests wrt its state
     func getData(repo: String, username: String, owner: String, state: StateType, view: UIView) {
